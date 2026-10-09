@@ -69,7 +69,6 @@ Para Google Ads, usar domínio próprio com HTTPS.
 - [ ] Confirmar idade mínima (49 anos) por produto e região
 - [ ] Confirmar com a MedSênior as regras de uso de marca e de divulgação de preço e campanha por corretores
 - [ ] Revisar a política de privacidade (prazo de guarda)
-- [ ] Logo da StarLife Saúde em arquivo (SVG ou PNG) para o topo
 - [ ] Criar a planilha e preencher `planilhaUrl`
 - [ ] Preencher `googleAds` e testar a conversão
 - [ ] Domínio
