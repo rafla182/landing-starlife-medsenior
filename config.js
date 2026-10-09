@@ -26,6 +26,22 @@ window.LP_CONFIG = {
     nota: 'Valor de referência para [produto], [faixa etária], [cidade/UF], em [mês/ano].'
   },
 
+  // Seção "Quem atende você": o corretor ou a corretora desta versão da página.
+  // Para outra pessoa, troque nome, foto (imagem quadrada) e parágrafos.
+  // mostrar: false deixa a página sem apresentação pessoal.
+  quemAtende: {
+    mostrar: true,
+    nome: 'Vanessa',
+    foto: 'assets/vanessa.jpg',
+    paragrafos: [
+      'Olá! Me chamo Vanessa, sou corretora de planos de saúde e formada em Administração de Empresas.',
+      'Gosto de conversar sobre planos de saúde com clareza. Meu trabalho é entender o que é mais importante para você neste momento e orientar a escolha do plano mais adequado para você, sua família ou sua empresa.'
+    ]
+  },
+
+  // Pixel da Meta (Facebook/Instagram). Ex.: '123456789012345'. Dispara PageView e Lead.
+  metaPixel: '',
+
   // Google Ads. Ex.: id 'AW-1234567890' e conversao 'AW-1234567890/AbCdEfGh'.
   googleAds: {
     id: '',
