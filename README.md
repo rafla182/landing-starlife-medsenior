@@ -22,6 +22,7 @@ Só entra na planilha quem preenche o formulário, e todo mundo que vai para o W
 | `script.js` | Formulário, estados, campanha, envio do lead |
 | `config.js` | **Configuração do dia a dia** (WhatsApp, planilha, campanha, preço, Google Ads) |
 | `privacidade.html` | Política de privacidade (rascunho) |
+| `assets/og-vanessa.jpg` | Imagem da prévia do link no WhatsApp (1200×630), com a foto do corretor |
 | `apps-script/Code.gs` | Código que roda na Planilha Google e recebe os leads |
 
 ## Rodar localmente
@@ -72,7 +73,8 @@ Para Google Ads, usar domínio próprio com HTTPS.
 - [ ] Revisar a política de privacidade antes de publicar
 - [ ] Criar a planilha e preencher `planilhaUrl`
 - [ ] Preencher `metaPixel` e testar o evento Lead (a cliente anuncia na Meta; Google Ads ainda não tem conta)
-- [ ] Domínio
+- [ ] Domínio. Depois de definido, trocar `og:image` em `index.html` pelo endereço completo da imagem
+  (`https://dominio/assets/og-vanessa.jpg`) e testar o link no WhatsApp
 
 ## Cuidados
 
