@@ -1,6 +1,6 @@
-# Landing Star Life · MedSênior
+# Landing StarLife Saúde · MedSênior
 
-Landing page da Star Life Corretora para captação de cotações de planos MedSênior.
+Landing page da Vanessa, corretora da StarLife Saúde, para captação de cotações de planos MedSênior.
 Site estático (HTML, CSS e JavaScript puros), sem build.
 
 ## Como funciona
@@ -8,6 +8,8 @@ Site estático (HTML, CSS e JavaScript puros), sem build.
 1. Todos os botões da página levam ao mesmo formulário (nome, WhatsApp e estado).
 2. Ao enviar, o lead é gravado em uma Planilha Google e a corretora recebe um e-mail de aviso.
 3. Em seguida o WhatsApp abre com a mensagem pronta.
+
+Os leads vão para o WhatsApp, a planilha e o e-mail da Vanessa, não para os canais gerais da corretora.
 
 Só entra na planilha quem preenche o formulário, e todo mundo que vai para o WhatsApp passa por ele.
 
@@ -62,13 +64,12 @@ Para Google Ads, usar domínio próprio com HTTPS.
 
 ## Pendências antes de publicar
 
-- [ ] CNPJ e registro SUSEP da Star Life no rodapé (endereço já preenchido a partir de starlifesaude.com.br)
+- [ ] CNPJ e registro SUSEP da StarLife Saúde no rodapé (endereço já preenchido a partir de starlifesaude.com.br)
 - [ ] Foto e texto de apresentação da Vanessa
-- [ ] Confirmar o WhatsApp de atendimento: `config.js` usa (27) 99528-2647, o site da Star Life mostra (27) 99861-7901
 - [ ] Confirmar idade mínima (49 anos) por produto e região
 - [ ] Confirmar com a MedSênior as regras de uso de marca e de divulgação de preço e campanha por corretores
-- [ ] Revisar a política de privacidade (prazo de guarda; e-mail de contato veio do site da Star Life)
-- [ ] Logo da Star Life em arquivo (SVG ou PNG) para o topo
+- [ ] Revisar a política de privacidade (prazo de guarda)
+- [ ] Logo da StarLife Saúde em arquivo (SVG ou PNG) para o topo
 - [ ] Criar a planilha e preencher `planilhaUrl`
 - [ ] Preencher `googleAds` e testar a conversão
 - [ ] Domínio
