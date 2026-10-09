@@ -71,7 +71,16 @@
     var quem = cfg.quemAtende || {};
     mostrar('[data-quem]', !!quem.mostrar);
     $$('[data-quem-foto]').forEach(function (el) {
-      if (quem.foto) { el.src = quem.foto; el.hidden = false; }
+      if (quem.foto) { el.src = quem.foto; el.alt = quem.nome || ''; el.hidden = false; }
+    });
+    $$('[data-quem-botao]').forEach(function (el) { if (quem.nome) el.textContent = 'Falar com ' + quem.nome; });
+    $$('[data-quem-texto]').forEach(function (el) {
+      el.textContent = '';
+      (quem.paragrafos || []).forEach(function (t) {
+        var p = document.createElement('p');
+        p.textContent = t;
+        el.appendChild(p);
+      });
     });
 
     var preco = cfg.preco || {};

@@ -167,6 +167,7 @@ a:hover { color: #0B6B37; }
 .quem__foto { flex: 0 0 200px; width: 200px; height: 200px; border-radius: 50%; object-fit: cover; }
 .quem__texto { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
 .quem__texto h2 { margin-bottom: 0; }
+.quem__paragrafos { display: flex; flex-direction: column; gap: 12px; }
 .quem__texto p { font-size: 20px; color: var(--tinta-media); }
 
 details {

@@ -39,7 +39,8 @@ python3 -m http.server 8000
   útil para ter uma URL por campanha do Google Ads.
 - `campanha`: `ativa` liga o selo e a faixa de carência zero; depois de `fim` eles somem sozinhos.
 - `preco`: bloco "a partir de". Só ligar com valor real e contratável, e preencher a referência.
-- `quemAtende`: liga a seção de apresentação da Vanessa (com foto opcional). Desligada, a página fica genérica.
+- `quemAtende`: apresentação de quem atende (nome, foto e parágrafos). A página é um modelo genérico:
+  para outra pessoa da corretora, basta trocar esses dados e o `whatsapp`. A versão atual usa a Vanessa como exemplo.
 - `metaPixel`: ID do Pixel da Meta. Dispara `PageView` ao abrir e `Lead` quando o formulário é enviado.
 - `googleAds`: `id` da conta e rótulo de `conversao`, disparada quando o formulário é enviado.
 
@@ -67,7 +68,8 @@ Para Google Ads, usar domínio próprio com HTTPS.
 ## Pendências antes de publicar
 
 - [ ] Valores e regras das campanhas para o bloco "a partir de" (a cliente vai enviar)
-- [ ] Decidir se a página mostra a apresentação da Vanessa (`quemAtende`) e, se sim, enviar a foto original
+- [ ] Aprovação da Aline (versão de exemplo com a Vanessa)
+- [ ] Trocar `assets/vanessa.jpg` pela foto original (a atual foi recortada de um card e tem baixa resolução)
 - [ ] Revisar a política de privacidade antes de publicar
 - [ ] Criar a planilha e preencher `planilhaUrl`
 - [ ] Preencher `metaPixel` e testar o evento Lead (a cliente anuncia na Meta; Google Ads ainda não tem conta)
