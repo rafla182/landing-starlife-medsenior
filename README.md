@@ -62,12 +62,13 @@ Para Google Ads, usar domínio próprio com HTTPS.
 
 ## Pendências antes de publicar
 
-- [ ] CNPJ, registro SUSEP e endereço da Star Life no rodapé
+- [ ] CNPJ e registro SUSEP da Star Life no rodapé (endereço já preenchido a partir de starlifesaude.com.br)
 - [ ] Foto e texto de apresentação da Vanessa
-- [ ] Confirmar que o número em `config.js` é o WhatsApp de atendimento
+- [ ] Confirmar o WhatsApp de atendimento: `config.js` usa (27) 99528-2647, o site da Star Life mostra (27) 99861-7901
 - [ ] Confirmar idade mínima (49 anos) por produto e região
 - [ ] Confirmar com a MedSênior as regras de uso de marca e de divulgação de preço e campanha por corretores
-- [ ] Revisar a política de privacidade (prazo de guarda e e-mail de contato)
+- [ ] Revisar a política de privacidade (prazo de guarda; e-mail de contato veio do site da Star Life)
+- [ ] Logo da Star Life em arquivo (SVG ou PNG) para o topo
 - [ ] Criar a planilha e preencher `planilhaUrl`
 - [ ] Preencher `googleAds` e testar a conversão
 - [ ] Domínio
