@@ -69,7 +69,6 @@ Para Google Ads, usar domínio próprio com HTTPS.
 
 - [ ] Valores e regras das campanhas para o bloco "a partir de" (a cliente vai enviar)
 - [ ] Aprovação da Aline (versão de exemplo com a Vanessa)
-- [ ] Trocar `assets/vanessa.jpg` pela foto original (a atual foi recortada de um card e tem baixa resolução)
 - [ ] Revisar a política de privacidade antes de publicar
 - [ ] Criar a planilha e preencher `planilhaUrl`
 - [ ] Preencher `metaPixel` e testar o evento Lead (a cliente anuncia na Meta; Google Ads ainda não tem conta)
