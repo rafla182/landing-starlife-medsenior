@@ -73,8 +73,8 @@ Para Google Ads, usar domínio próprio com HTTPS.
 - [ ] Revisar a política de privacidade antes de publicar
 - [ ] Criar a planilha e preencher `planilhaUrl`
 - [ ] Preencher `metaPixel` e testar o evento Lead (a cliente anuncia na Meta; Google Ads ainda não tem conta)
-- [ ] Domínio. Depois de definido, trocar `og:image` em `index.html` pelo endereço completo da imagem
-  (`https://dominio/assets/og-vanessa.jpg`) e testar o link no WhatsApp
+- [ ] Domínio definitivo (hoje a página está em `landing-starlife-medsenior.netlify.app`). Ao trocar,
+  atualizar `og:url` e `og:image` em `index.html`
 
 ## Cuidados
 
