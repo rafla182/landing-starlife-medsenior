@@ -68,6 +68,12 @@
       var p = c.fim.split('-');
       $$('[data-campanha-fim]').forEach(function (el) { el.textContent = p[2] + '/' + p[1] + '/' + p[0]; });
     }
+    var quem = cfg.quemAtende || {};
+    mostrar('[data-quem]', !!quem.mostrar);
+    $$('[data-quem-foto]').forEach(function (el) {
+      if (quem.foto) { el.src = quem.foto; el.hidden = false; }
+    });
+
     var preco = cfg.preco || {};
     mostrar('[data-preco]', !!preco.mostrar);
     $$('[data-preco-valor]').forEach(function (el) { el.textContent = preco.valor || ''; });
@@ -142,6 +148,9 @@
     if (g.conversao && typeof window.gtag === 'function') {
       window.gtag('event', 'conversion', { send_to: g.conversao });
     }
+    if (cfg.metaPixel && typeof window.fbq === 'function') {
+      window.fbq('track', 'Lead');
+    }
   }
 
   form.addEventListener('submit', function (ev) {
@@ -168,7 +177,7 @@
         utm_campaign: params.get('utm_campaign') || '',
         utm_term: params.get('utm_term') || '',
         utm_content: params.get('utm_content') || '',
-        gclid: params.get('gclid') || params.get('gbraid') || params.get('wbraid') || '',
+        gclid: params.get('gclid') || params.get('gbraid') || params.get('wbraid') || params.get('fbclid') || '',
         pagina: window.location.origin + window.location.pathname,
         site: ''
       });
@@ -212,7 +221,25 @@
     window.gtag('config', g.id);
   }
 
+  /* ---------- Pixel da Meta ---------- */
+
+  function carregarPixel() {
+    if (!cfg.metaPixel || window.fbq) return;
+    var n = window.fbq = function () {
+      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+    };
+    window._fbq = n;
+    n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+    document.head.appendChild(s);
+    window.fbq('init', String(cfg.metaPixel));
+    window.fbq('track', 'PageView');
+  }
+
   desenharUfs();
   aplicarOferta();
   carregarAds();
+  carregarPixel();
 })();

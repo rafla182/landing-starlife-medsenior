@@ -39,6 +39,8 @@ python3 -m http.server 8000
   útil para ter uma URL por campanha do Google Ads.
 - `campanha`: `ativa` liga o selo e a faixa de carência zero; depois de `fim` eles somem sozinhos.
 - `preco`: bloco "a partir de". Só ligar com valor real e contratável, e preencher a referência.
+- `quemAtende`: liga a seção de apresentação da Vanessa (com foto opcional). Desligada, a página fica genérica.
+- `metaPixel`: ID do Pixel da Meta. Dispara `PageView` ao abrir e `Lead` quando o formulário é enviado.
 - `googleAds`: `id` da conta e rótulo de `conversao`, disparada quando o formulário é enviado.
 
 Tudo em `config.js` é público para quem abre a página. Não colocar senhas ali.
@@ -53,7 +55,7 @@ Tudo em `config.js` é público para quem abre a página. Não colocar senhas al
 5. Copiar a URL terminada em `/exec` para `planilhaUrl` em `config.js`.
 
 A aba `Leads` é criada no primeiro envio, com as colunas: data/hora, nome, telefone, UF,
-origem do clique, parâmetros do anúncio (utm e gclid) e página.
+origem do clique, parâmetros do anúncio (utm e ID do clique do Google ou da Meta) e página.
 
 Ao alterar `Code.gs`, é preciso criar uma nova versão da implantação para a mudança valer.
 
@@ -64,13 +66,11 @@ Para Google Ads, usar domínio próprio com HTTPS.
 
 ## Pendências antes de publicar
 
-- [ ] CNPJ e registro SUSEP da StarLife Saúde no rodapé (endereço já preenchido a partir de starlifesaude.com.br)
-- [ ] Foto e texto de apresentação da Vanessa
-- [ ] Confirmar idade mínima (49 anos) por produto e região
-- [ ] Confirmar com a MedSênior as regras de uso de marca e de divulgação de preço e campanha por corretores
-- [ ] Revisar a política de privacidade (prazo de guarda)
+- [ ] Valores e regras das campanhas para o bloco "a partir de" (a cliente vai enviar)
+- [ ] Decidir se a página mostra a apresentação da Vanessa (`quemAtende`) e, se sim, enviar a foto original
+- [ ] Revisar a política de privacidade antes de publicar
 - [ ] Criar a planilha e preencher `planilhaUrl`
-- [ ] Preencher `googleAds` e testar a conversão
+- [ ] Preencher `metaPixel` e testar o evento Lead (a cliente anuncia na Meta; Google Ads ainda não tem conta)
 - [ ] Domínio
 
 ## Cuidados

@@ -26,6 +26,16 @@ window.LP_CONFIG = {
     nota: 'Valor de referência para [produto], [faixa etária], [cidade/UF], em [mês/ano].'
   },
 
+  // Seção "Quem atende você", com a apresentação da Vanessa. Desligada = página genérica.
+  // foto: caminho de uma imagem quadrada, ex. 'assets/vanessa.jpg'. Vazio = sem foto.
+  quemAtende: {
+    mostrar: false,
+    foto: ''
+  },
+
+  // Pixel da Meta (Facebook/Instagram). Ex.: '123456789012345'. Dispara PageView e Lead.
+  metaPixel: '',
+
   // Google Ads. Ex.: id 'AW-1234567890' e conversao 'AW-1234567890/AbCdEfGh'.
   googleAds: {
     id: '',

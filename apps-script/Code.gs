@@ -12,7 +12,7 @@ var ABA = 'Leads';
 var COLUNAS = [
   'Data/hora', 'Nome', 'Telefone', 'UF', 'Origem do clique',
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
-  'gclid', 'Página'
+  'ID do clique (gclid/fbclid)', 'Página'
 ];
 var UFS_ACEITAS = ['ES', 'SP', 'RJ', 'MG', 'PR', 'RS', 'PE', 'DF'];
 
