@@ -26,12 +26,15 @@ window.LP_CONFIG = {
     nota: 'Valor de referência para [produto], [faixa etária], [cidade/UF], em [mês/ano].'
   },
 
-  // Seção "Quem atende você": o corretor ou a corretora desta versão da página.
-  // Para outra pessoa, troque nome, foto (imagem quadrada) e parágrafos.
-  // mostrar: false deixa a página sem apresentação pessoal.
+  // Quem atende os leads desta página.
+  // mostrar: false = página genérica, sem nome nem foto do corretor (os leads continuam indo
+  //   para o WhatsApp acima). O nome segue só na política de privacidade, como exige a LGPD.
+  // mostrar: true = nome no topo e no rodapé e a seção "Quem atende você" com foto e texto.
   quemAtende: {
-    mostrar: true,
+    mostrar: false,
     nome: 'Vanessa',
+    nomeCompleto: 'Vanessa Rodrigues',
+    titulo: 'Corretora autorizada MedSênior',
     foto: 'assets/vanessa.jpg',
     paragrafos: [
       'Olá! Me chamo Vanessa, sou corretora de planos de saúde e formada em Administração de Empresas.',
