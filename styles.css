@@ -173,6 +173,15 @@ a:hover { color: #0B6B37; }
 .quem__paragrafos { display: flex; flex-direction: column; gap: 12px; }
 .quem__texto p { font-size: 20px; color: var(--tinta-media); }
 
+.com-foto { display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
+.com-foto__texto { flex: 999 1 480px; min-width: 0; }
+.com-foto .passos { flex-direction: column; gap: 28px; }
+.com-foto .passo { flex: none; }
+.foto-secao {
+  flex: 1 1 300px; width: 100%; max-width: 420px; height: auto;
+  aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; display: block;
+}
+
 details {
   background: #fff; border: 1px solid var(--linha); border-radius: 14px;
   padding: 20px 24px; margin-top: 16px;
@@ -202,6 +211,9 @@ details p { margin-top: 12px; color: var(--tinta-media); }
   .hero__linha { padding-top: 40px; padding-bottom: 40px; gap: 32px; }
   .cartao { padding: 24px; max-width: none; }
   .secao { padding: 56px 0; }
+  .com-foto { gap: 32px; }
+  .foto-secao { max-width: none; aspect-ratio: 4 / 3; }
+  .com-foto--invertido .foto-secao { order: -1; }
 }
 
 @media (prefers-reduced-motion: reduce) {

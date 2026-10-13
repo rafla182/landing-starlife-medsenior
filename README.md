@@ -25,6 +25,7 @@ Só entra na planilha quem preenche o formulário, e todo mundo que vai para o W
 | `privacidade.html` | Política de privacidade (rascunho) |
 | `assets/og-medsenior.jpg` | Prévia do link no WhatsApp (1200×630), versão genérica |
 | `assets/og-vanessa-v2.jpg` | Prévia com a foto da Vanessa, para quando `quemAtende.mostrar` for `true` |
+| `assets/foto-*.jpg` | Fotos das seções "O que o plano oferece", campanha e "Como funciona" |
 | `apps-script/Code.gs` | Código que roda na Planilha Google e recebe os leads |
 
 ## Rodar localmente
