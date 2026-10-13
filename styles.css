@@ -156,14 +156,20 @@ a:hover { color: #0B6B37; }
 .publico p { color: #E4EFE7; }
 
 .passos { list-style: none; margin: 0 0 40px; padding: 0; display: flex; flex-wrap: wrap; gap: 24px; }
-.passo { flex: 1 1 260px; display: flex; flex-direction: column; gap: 10px; }
+.passo {
+  flex: 1 1 260px;
+  display: grid; grid-template-columns: 44px minmax(0, 1fr);
+  column-gap: 16px; row-gap: 6px; align-items: center; align-content: start;
+}
 .passo__n {
+  grid-row: 1; grid-column: 1;
   width: 44px; height: 44px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   background: var(--verde-escuro); color: #fff; font-weight: 800; font-size: 20px;
 }
-.passo h3 { font-size: 21px; font-weight: 700; }
-.passo p { color: var(--tinta-suave); }
+.passo h3 { grid-row: 1; grid-column: 2; font-size: 21px; font-weight: 700; line-height: 1.25; }
+.passo p { grid-row: 2; grid-column: 2; color: var(--tinta-suave); }
+.acoes-centro { display: flex; justify-content: center; }
 
 .secao--borda { border-top: 1px solid var(--linha); }
 .quem { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; }
