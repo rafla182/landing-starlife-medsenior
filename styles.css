@@ -175,8 +175,6 @@ a:hover { color: #0B6B37; }
 
 .com-foto { display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
 .com-foto__texto { flex: 999 1 480px; min-width: 0; }
-.com-foto .passos { flex-direction: column; gap: 28px; }
-.com-foto .passo { flex: none; }
 .foto-secao {
   flex: 1 1 300px; width: 100%; max-width: 420px; height: auto;
   aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; display: block;
