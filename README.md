@@ -1,6 +1,7 @@
-# Landing StarLife Saúde · MedSênior
+# Landing do corretor · MedSênior
 
-Landing page da Vanessa, corretora da StarLife Saúde, para captação de cotações de planos MedSênior.
+Landing page de corretor autorizado MedSênior para captação de cotações. A página é do corretor,
+não da corretora: a versão atual usa a Vanessa Rodrigues.
 Site estático (HTML, CSS e JavaScript puros), sem build.
 
 ## Como funciona
@@ -9,7 +10,7 @@ Site estático (HTML, CSS e JavaScript puros), sem build.
 2. Ao enviar, o lead é gravado em uma Planilha Google e a corretora recebe um e-mail de aviso.
 3. Em seguida o WhatsApp abre com a mensagem pronta.
 
-Os leads vão para o WhatsApp, a planilha e o e-mail da Vanessa, não para os canais gerais da corretora.
+Os leads vão para o WhatsApp, a planilha e o e-mail do corretor da página.
 
 Só entra na planilha quem preenche o formulário, e todo mundo que vai para o WhatsApp passa por ele.
 
@@ -22,7 +23,7 @@ Só entra na planilha quem preenche o formulário, e todo mundo que vai para o W
 | `script.js` | Formulário, estados, campanha, envio do lead |
 | `config.js` | **Configuração do dia a dia** (WhatsApp, planilha, campanha, preço, Google Ads) |
 | `privacidade.html` | Política de privacidade (rascunho) |
-| `assets/og-vanessa.jpg` | Imagem da prévia do link no WhatsApp (1200×630), com a foto do corretor |
+| `assets/og-vanessa-v2.jpg` | Imagem da prévia do link no WhatsApp (1200×630), com a foto do corretor |
 | `apps-script/Code.gs` | Código que roda na Planilha Google e recebe os leads |
 
 ## Rodar localmente
@@ -40,7 +41,7 @@ python3 -m http.server 8000
   útil para ter uma URL por campanha do Google Ads.
 - `campanha`: `ativa` liga o selo e a faixa de carência zero; depois de `fim` eles somem sozinhos.
 - `preco`: bloco "a partir de". Só ligar com valor real e contratável, e preencher a referência.
-- `quemAtende`: apresentação de quem atende (nome, foto e parágrafos). A página é um modelo genérico:
+- `quemAtende`: apresentação de quem atende (nome, nome completo do topo e do rodapé, foto e parágrafos). A página é um modelo genérico:
   para outra pessoa da corretora, basta trocar esses dados e o `whatsapp`. A versão atual usa a Vanessa como exemplo.
 - `metaPixel`: ID do Pixel da Meta. Dispara `PageView` ao abrir e `Lead` quando o formulário é enviado.
 - `googleAds`: `id` da conta e rótulo de `conversao`, disparada quando o formulário é enviado.
@@ -78,6 +79,7 @@ Para Google Ads, usar domínio próprio com HTTPS.
 
 ## Cuidados
 
-- O site é da corretora, não da operadora: manter essa identificação no topo e no rodapé.
+- A página é do corretor e não pode ter a identidade visual da corretora (StarLife).
+- Não é o site da operadora: manter "corretora autorizada MedSênior" no topo e o aviso no rodapé.
 - A campanha de carência zero vale para contratos assinados até 31/10/2026. Depois disso,
   atualizar `campanha` e os textos da faixa e do rodapé em `index.html`.

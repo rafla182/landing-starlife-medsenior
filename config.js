@@ -32,6 +32,7 @@ window.LP_CONFIG = {
   quemAtende: {
     mostrar: true,
     nome: 'Vanessa',
+    nomeCompleto: 'Vanessa Rodrigues', // aparece no topo e no rodapé
     foto: 'assets/vanessa.jpg',
     paragrafos: [
       'Olá! Me chamo Vanessa, sou corretora de planos de saúde e formada em Administração de Empresas.',

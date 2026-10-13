@@ -69,6 +69,9 @@
       $$('[data-campanha-fim]').forEach(function (el) { el.textContent = p[2] + '/' + p[1] + '/' + p[0]; });
     }
     var quem = cfg.quemAtende || {};
+    if (quem.nomeCompleto) {
+      $$('[data-corretor-nome]').forEach(function (el) { el.textContent = quem.nomeCompleto; });
+    }
     mostrar('[data-quem]', !!quem.mostrar);
     $$('[data-quem-foto]').forEach(function (el) {
       if (quem.foto) { el.src = quem.foto; el.alt = quem.nome || ''; el.hidden = false; }

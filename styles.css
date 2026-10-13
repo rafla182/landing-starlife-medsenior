@@ -2,6 +2,7 @@
   --verde-escuro: #004522;
   --verde: #388E3C;
   --bege: #FDD79A;
+  --verde-claro: #A6CE39;
   --tinta: #12261A;
   --tinta-suave: #3F5447;
   --tinta-media: #2B4033;
@@ -46,6 +47,8 @@ a:hover { color: #0B6B37; }
 .botao--escuro:hover { background: #0B5A30; color: #fff; }
 .botao--claro { background: var(--bege); color: #3A2A05; }
 .botao--claro:hover { background: #FFE3B5; color: #3A2A05; }
+.botao--lima { background: var(--verde-claro); color: #003A1D; }
+.botao--lima:hover { background: #B9DD55; color: #003A1D; }
 .botao--cheio { width: 100%; min-height: 60px; font-size: 19px; }
 .link {
   padding: 12px 0; border: 0; background: none; cursor: pointer;
@@ -54,7 +57,7 @@ a:hover { color: #0B6B37; }
 }
 
 /* Topo */
-.topo { border-bottom: 1px solid #E3EBE5; }
+.topo { background: var(--verde-escuro); border-bottom: 1px solid #0E5A33; }
 .topo__linha {
   display: flex; flex-wrap: wrap; gap: 16px;
   align-items: center; justify-content: space-between;
@@ -63,11 +66,11 @@ a:hover { color: #0B6B37; }
 .topo .botao { min-height: 48px; padding: 0 22px; font-size: 17px; font-weight: 700; }
 .marca { display: flex; flex-direction: column; gap: 6px; }
 .marca__logo { display: block; height: 50px; width: auto; align-self: flex-start; }
-.marca__nome { font-size: 24px; font-weight: 800; color: var(--verde-escuro); letter-spacing: -0.01em; }
-.marca__sub { font-size: 15px; color: var(--tinta-suave); }
+.marca__nome { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.01em; text-decoration: none; }
+.marca__sub { font-size: 15px; color: #C9E4A0; }
 
 /* Hero */
-.hero { background: var(--fundo-suave); }
+.hero { background: var(--verde-escuro); color: #E4EFE7; }
 .hero__linha {
   display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;
   padding-top: 64px; padding-bottom: 64px;
@@ -75,17 +78,17 @@ a:hover { color: #0B6B37; }
 .hero__texto { flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
 .hero h1 {
   font-size: clamp(34px, 5vw, 56px); line-height: 1.08; font-weight: 800;
-  color: var(--verde-escuro); letter-spacing: -0.02em;
+  color: var(--verde-claro); letter-spacing: -0.02em;
 }
 .hero__operadora { display: block; height: 56px; width: auto; }
-.hero__sub { font-size: 20px; color: var(--tinta-media); max-width: 520px; }
+.hero__sub { font-size: 20px; color: #E4EFE7; max-width: 520px; }
 .selo {
   padding: 8px 16px; border-radius: 999px;
   background: var(--bege); color: #3A2A05; font-weight: 700; font-size: 16px;
 }
 .preco {
   display: flex; flex-direction: column; gap: 4px;
-  padding: 20px 24px; border-radius: 16px; background: #fff; border: 1px solid var(--linha);
+  padding: 20px 24px; border-radius: 16px; background: #fff; color: var(--tinta); border: 1px solid var(--linha);
 }
 .preco__rotulo, .preco__ref { font-size: 15px; color: var(--tinta-suave); }
 .preco__valor { font-size: 36px; font-weight: 800; color: var(--verde-escuro); line-height: 1.1; }
@@ -94,7 +97,7 @@ a:hover { color: #0B6B37; }
 /* Cartão do formulário */
 .cartao {
   flex: 1 1 380px; min-width: 0; max-width: 480px;
-  background: #fff; border: 1px solid var(--linha); border-radius: 20px; padding: 32px;
+  background: #fff; color: var(--tinta); border: 1px solid var(--linha); border-radius: 20px; padding: 32px;
   scroll-margin-top: 16px;
 }
 .cartao form, #form-sucesso { display: flex; flex-direction: column; gap: 20px; }
@@ -133,7 +136,7 @@ a:hover { color: #0B6B37; }
   font-size: clamp(28px, 4vw, 34px); line-height: 1.2; font-weight: 800;
   color: var(--verde-escuro); letter-spacing: -0.01em; margin-bottom: 40px;
 }
-.secao--verde h2 { color: #fff; margin-bottom: 32px; }
+.secao--verde h2 { color: var(--verde-claro); margin-bottom: 32px; }
 .sobretitulo {
   font-size: 16px; font-weight: 700; color: var(--bege);
   letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px;
@@ -149,7 +152,7 @@ a:hover { color: #0B6B37; }
   flex: 1 1 300px; padding: 28px; border: 1px solid #2F6B49; border-radius: 16px;
   display: flex; flex-direction: column; gap: 8px;
 }
-.publico h3 { font-size: 22px; font-weight: 700; color: var(--bege); }
+.publico h3 { font-size: 22px; font-weight: 700; color: var(--verde-claro); }
 .publico p { color: #E4EFE7; }
 
 .passos { list-style: none; margin: 0 0 40px; padding: 0; display: flex; flex-wrap: wrap; gap: 24px; }
