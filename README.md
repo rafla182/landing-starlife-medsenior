@@ -1,7 +1,7 @@
 # Landing do corretor · MedSênior
 
-Landing page de corretor autorizado MedSênior para captação de cotações. A página é do corretor,
-não da corretora: a versão atual usa a Vanessa Rodrigues.
+Landing page de corretor autorizado MedSênior para captação de cotações. A página é genérica e
+direciona para o atendimento do corretor configurado (hoje, a Vanessa Rodrigues).
 Site estático (HTML, CSS e JavaScript puros), sem build.
 
 ## Como funciona
@@ -23,7 +23,8 @@ Só entra na planilha quem preenche o formulário, e todo mundo que vai para o W
 | `script.js` | Formulário, estados, campanha, envio do lead |
 | `config.js` | **Configuração do dia a dia** (WhatsApp, planilha, campanha, preço, Google Ads) |
 | `privacidade.html` | Política de privacidade (rascunho) |
-| `assets/og-vanessa-v2.jpg` | Imagem da prévia do link no WhatsApp (1200×630), com a foto do corretor |
+| `assets/og-medsenior.jpg` | Prévia do link no WhatsApp (1200×630), versão genérica |
+| `assets/og-vanessa-v2.jpg` | Prévia com a foto da Vanessa, para quando `quemAtende.mostrar` for `true` |
 | `apps-script/Code.gs` | Código que roda na Planilha Google e recebe os leads |
 
 ## Rodar localmente
@@ -41,8 +42,10 @@ python3 -m http.server 8000
   útil para ter uma URL por campanha do Google Ads.
 - `campanha`: `ativa` liga o selo e a faixa de carência zero; depois de `fim` eles somem sozinhos.
 - `preco`: bloco "a partir de". Só ligar com valor real e contratável, e preencher a referência.
-- `quemAtende`: apresentação de quem atende (nome, nome completo do topo e do rodapé, foto e parágrafos). A página é um modelo genérico:
-  para outra pessoa da corretora, basta trocar esses dados e o `whatsapp`. A versão atual usa a Vanessa como exemplo.
+- `quemAtende`: quem atende os leads. Com `mostrar: false` (padrão) a página é genérica, sem nome
+  nem foto, e os leads vão para o `whatsapp` configurado. Com `mostrar: true`, o nome aparece no topo
+  e no rodapé e entra a seção "Quem atende você". Para outro corretor, troque esses dados e o `whatsapp`.
+  O nome do corretor fica sempre na política de privacidade, porque a LGPD exige identificar o responsável.
 - `metaPixel`: ID do Pixel da Meta. Dispara `PageView` ao abrir e `Lead` quando o formulário é enviado.
 - `googleAds`: `id` da conta e rótulo de `conversao`, disparada quando o formulário é enviado.
 

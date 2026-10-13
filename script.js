@@ -69,8 +69,11 @@
       $$('[data-campanha-fim]').forEach(function (el) { el.textContent = p[2] + '/' + p[1] + '/' + p[0]; });
     }
     var quem = cfg.quemAtende || {};
-    if (quem.nomeCompleto) {
+    if (quem.mostrar && quem.nomeCompleto) {
+      var titulo = quem.titulo || 'Corretor autorizado MedSênior';
       $$('[data-corretor-nome]').forEach(function (el) { el.textContent = quem.nomeCompleto; });
+      $$('[data-corretor-titulo]').forEach(function (el) { el.textContent = titulo; });
+      $$('[data-corretor-rodape]').forEach(function (el) { el.textContent = quem.nomeCompleto + ' · ' + titulo; });
     }
     mostrar('[data-quem]', !!quem.mostrar);
     $$('[data-quem-foto]').forEach(function (el) {
