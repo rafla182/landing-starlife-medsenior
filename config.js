@@ -9,8 +9,16 @@ window.LP_CONFIG = {
   // URL do Web App do Google Apps Script (ver README). Vazio = não grava na planilha.
   planilhaUrl: '',
 
-  // Estado marcado quando o link não traz ?uf=XX.
-  ufPadrao: 'ES',
+  // Ajustes por estado, para as páginas /go, /sp etc. (qualquer sigla funciona, mesmo sem entrada aqui).
+  // Cada estado pode ter WhatsApp e foto de topo próprios. Ex.:
+  //   GO: { whatsapp: '5562999999999', fotoTopo: 'assets/topo-go.jpg' }
+  estados: {},
+
+  // Logo da MedSênior no topo. Só use com autorização da operadora; false esconde o logo.
+  logoOperadora: true,
+
+  // Foto de fundo do topo da página (imagem larga, em torno de 1600 px). Vazio = fundo verde liso.
+  fotoTopo: 'assets/topo.jpg',
 
   // Campanha: some sozinha depois de "fim" (data no horário de Brasília).
   campanha: {

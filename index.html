@@ -44,13 +44,27 @@
 
 <main>
 
+<section class="banner" data-hero>
+  <div class="container">
+    <div class="banner__texto">
+      <img class="hero__operadora" data-logo-operadora src="assets/logo-medsenior-claro.png" alt="MedSênior" width="560" height="194">
+      <p class="selo" data-campanha hidden>Carência zero* para contratos assinados até <span data-campanha-fim>31/10/2026</span></p>
+      <h1>Plano de saúde MedSênior<span data-uf-titulo></span>, sem coparticipação.</h1>
+      <p class="hero__sub">Cuidado pensado para quem tem 44 anos ou mais, com medicina preventiva e atendimento em rede própria.</p>
+      <a class="botao botao--lima" href="#cotacao" data-origem="banner">Peça sua cotação</a>
+    </div>
+  </div>
+</section>
+
 <section class="hero">
   <div class="container hero__linha">
     <div class="hero__texto">
-      <img class="hero__operadora" src="assets/logo-medsenior-claro.png" alt="MedSênior" width="560" height="194">
-      <p class="selo" data-campanha hidden>Carência zero* para contratos assinados até <span data-campanha-fim>31/10/2026</span></p>
-      <h1>Plano de saúde MedSênior <span data-uf-titulo>no Espírito Santo</span>, sem coparticipação.</h1>
-      <p class="hero__sub">Cuidado pensado para quem tem 44 anos ou mais, com medicina preventiva e atendimento em rede própria. Peça sua cotação sem custo com um corretor autorizado.</p>
+      <h2 class="hero__titulo">Receba sua cotação sem custo</h2>
+      <ul class="vantagens">
+        <li>Sem compromisso de contratar</li>
+        <li>Atendimento por corretor autorizado MedSênior</li>
+        <li>Resposta pelo WhatsApp</li>
+      </ul>
       <div class="preco" data-preco hidden>
         <span class="preco__rotulo">Planos a partir de</span>
         <span class="preco__valor"><span data-preco-valor></span><small> /mês**</small></span>
@@ -61,7 +75,7 @@
     <div class="cartao" id="cotacao">
       <form id="form-lead" novalidate>
         <h2>Peça sua cotação</h2>
-        <p class="cartao__sub">Preencha e continue a conversa no WhatsApp.</p>
+        <p class="cartao__sub">Seus dados são usados apenas para o corretor entrar em contato e enviar a cotação que você pediu.</p>
 
         <div class="campo">
           <label for="lead-nome">Nome</label>
@@ -69,13 +83,28 @@
         </div>
 
         <div class="campo">
-          <label for="lead-fone">WhatsApp com DDD</label>
+          <label for="lead-fone">Telefone (WhatsApp) com DDD</label>
           <input id="lead-fone" name="telefone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(27) 99999-9999" required>
         </div>
 
-        <fieldset class="campo">
-          <legend>Seu estado</legend>
-          <div class="ufs" id="ufs"></div>
+        <div class="campo">
+          <label for="lead-email">E-mail <span class="opcional">(opcional)</span></label>
+          <input id="lead-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="voce@email.com">
+        </div>
+
+        <div class="campo">
+          <label for="lead-cep">CEP</label>
+          <input id="lead-cep" name="cep" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" required aria-describedby="cep-local">
+          <span class="campo__ajuda" id="cep-local" aria-live="polite"></span>
+        </div>
+
+        <fieldset class="campo" id="lead-vinculo">
+          <legend>Você possui vínculo com uma empresa ou é MEI?</legend>
+          <div class="opcoes">
+            <label class="opcao"><input type="radio" name="vinculo" value="Não"> Não</label>
+            <label class="opcao"><input type="radio" name="vinculo" value="Sim, MEI ou proprietário de empresa"> Sim, sou MEI ou proprietário de empresa</label>
+            <label class="opcao"><input type="radio" name="vinculo" value="Sim, funcionário de empresa"> Sim, sou funcionário de empresa</label>
+          </div>
         </fieldset>
 
         <!-- Campo isca para robôs: pessoas não veem nem preenchem. -->
@@ -84,10 +113,14 @@
           <input id="lead-site" name="site" type="text" tabindex="-1" autocomplete="off">
         </div>
 
+        <label class="aceite" for="lead-aceite">
+          <input id="lead-aceite" name="aceite" type="checkbox" value="sim">
+          <span>Autorizo o contato por WhatsApp, telefone ou e-mail para receber a cotação, conforme a <a href="privacidade.html">Política de privacidade</a>.</span>
+        </label>
+
         <p class="erro" id="form-erro" role="alert" hidden></p>
 
         <button class="botao botao--escuro botao--cheio" type="submit">Continuar no WhatsApp</button>
-        <p class="consentimento">Ao enviar, você concorda em ser contatado pelo corretor responsável por esta página. <a href="privacidade.html">Política de privacidade</a>.</p>
       </form>
 
       <div id="form-sucesso" hidden>
@@ -171,7 +204,7 @@
       <li class="passo">
         <span class="passo__n" aria-hidden="true">1</span>
         <h3>Você pede a cotação</h3>
-        <p>Informe seu nome, WhatsApp e estado no formulário.</p>
+        <p>Informe seu nome, telefone e CEP no formulário.</p>
       </li>
       <li class="passo">
         <span class="passo__n" aria-hidden="true">2</span>
@@ -206,8 +239,8 @@
       <p>É a cobertura parcial temporária: um período em que alguns procedimentos ligados a doenças ou lesões que você já tinha ao contratar ficam sem cobertura. O corretor explica o seu caso na cotação.</p>
     </details>
     <details>
-      <summary>Em quais estados posso contratar?</summary>
-      <p>Espírito Santo, São Paulo, Rio de Janeiro, Minas Gerais, Paraná, Rio Grande do Sul, Pernambuco e Distrito Federal.</p>
+      <summary>A MedSênior atende a minha cidade?</summary>
+      <p>A MedSênior está presente em várias regiões do país e segue em expansão. Informe seu CEP no formulário e o corretor confirma o atendimento na sua cidade.</p>
     </details>
   </div>
 </section>
