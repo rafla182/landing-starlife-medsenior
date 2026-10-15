@@ -74,7 +74,7 @@ A prévia do WhatsApp (`og:*`) é a mesma para todos os estados, porque os robô
 1. Criar uma Planilha Google na conta da corretora.
 2. Em **Extensões → Apps Script**, colar o conteúdo de `apps-script/Code.gs`.
 3. Em **Configurações do projeto → Propriedades do script**, criar `EMAIL_AVISO` com o e-mail
-   que deve receber os avisos.
+   que deve receber os avisos (vários e-mails: separar com vírgula ou ponto e vírgula).
 4. **Implantar → Nova implantação → App da Web**, executar como "Eu" e acesso "Qualquer pessoa".
 5. Copiar a URL terminada em `/exec` para `planilhaUrl` em `config.js`.
 
