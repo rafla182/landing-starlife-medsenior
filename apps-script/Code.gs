@@ -62,7 +62,9 @@ function abaDeLeads() {
 }
 
 function avisar(nome, d, uf, vinculo, digitos) {
-  var para = PropertiesService.getScriptProperties().getProperty('EMAIL_AVISO');
+  // Aceita vários e-mails separados por vírgula ou ponto e vírgula.
+  var para = String(PropertiesService.getScriptProperties().getProperty('EMAIL_AVISO') || '')
+    .split(/[;,]/).map(function (s) { return s.trim(); }).filter(String).join(',');
   if (!para) return;
   var local = [limpar(d.cidade, 80), uf].filter(String).join(' - ');
   MailApp.sendEmail({
