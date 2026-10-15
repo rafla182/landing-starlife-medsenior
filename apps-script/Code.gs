@@ -10,7 +10,7 @@
 
 var ABA = 'Leads';
 var COLUNAS = [
-  'Data/hora', 'Nome', 'Telefone', 'E-mail', 'CEP', 'Cidade', 'UF', 'Vínculo com empresa', 'Origem do clique',
+  'Data/hora', 'Nome', 'Telefone', 'E-mail', 'CEP', 'Cidade', 'UF', 'Vínculo com empresa', 'Página do estado', 'Origem do clique',
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
   'ID do clique (gclid/fbclid)', 'Página'
 ];
@@ -35,7 +35,7 @@ function doPost(e) {
     var aba = abaDeLeads();
     aba.appendRow([
       new Date(), nome, limpar(d.telefone, 20), limpar(d.email, 120), limpar(d.cep, 9),
-      limpar(d.cidade, 80), uf, vinculo, limpar(d.origem, 40),
+      limpar(d.cidade, 80), uf, vinculo, limpar(d.pagina_uf, 2), limpar(d.origem, 40),
       limpar(d.utm_source, 100), limpar(d.utm_medium, 100), limpar(d.utm_campaign, 150),
       limpar(d.utm_term, 150), limpar(d.utm_content, 150),
       limpar(d.gclid, 200), limpar(d.pagina, 300)

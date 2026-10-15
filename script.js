@@ -15,7 +15,29 @@
     [88000, 89999, 'SC'], [90000, 99999, 'RS']
   ];
 
+  var ESTADOS = {
+    AC: ['Acre', 'no'], AL: ['Alagoas', 'em'], AP: ['Amapá', 'no'], AM: ['Amazonas', 'no'],
+    BA: ['Bahia', 'na'], CE: ['Ceará', 'no'], DF: ['Distrito Federal', 'no'], ES: ['Espírito Santo', 'no'],
+    GO: ['Goiás', 'em'], MA: ['Maranhão', 'no'], MT: ['Mato Grosso', 'em'], MS: ['Mato Grosso do Sul', 'em'],
+    MG: ['Minas Gerais', 'em'], PA: ['Pará', 'no'], PB: ['Paraíba', 'na'], PR: ['Paraná', 'no'],
+    PE: ['Pernambuco', 'em'], PI: ['Piauí', 'no'], RJ: ['Rio de Janeiro', 'no'], RN: ['Rio Grande do Norte', 'no'],
+    RS: ['Rio Grande do Sul', 'no'], RO: ['Rondônia', 'em'], RR: ['Roraima', 'em'], SC: ['Santa Catarina', 'em'],
+    SP: ['São Paulo', 'em'], SE: ['Sergipe', 'em'], TO: ['Tocantins', 'no']
+  };
+
   var params = new URLSearchParams(window.location.search);
+
+  // Página por estado: /go, /go/ ou ?uf=GO. Sem estado = página nacional.
+  var ufPagina = (function () {
+    var porLink = (params.get('uf') || '').toUpperCase();
+    var porCaminho = (window.location.pathname.split('/').filter(Boolean)[0] || '').toUpperCase();
+    if (ESTADOS[porLink]) return porLink;
+    if (ESTADOS[porCaminho]) return porCaminho;
+    return '';
+  })();
+  var estadoCfg = (cfg.estados && cfg.estados[ufPagina]) || {};
+  if (estadoCfg.whatsapp) cfg.whatsapp = estadoCfg.whatsapp;
+  if (estadoCfg.fotoTopo) cfg.fotoTopo = estadoCfg.fotoTopo;
   var $ = function (sel) { return document.querySelector(sel); };
   var $$ = function (sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); };
 
@@ -215,6 +237,7 @@
         uf: local.uf,
         cidade: local.cidade,
         vinculo: vinculo,
+        pagina_uf: ufPagina,
         origem: origem,
         utm_source: params.get('utm_source') || '',
         utm_medium: params.get('utm_medium') || '',
@@ -252,10 +275,17 @@
 
   /* ---------- Foto do topo ---------- */
 
+  function aplicarEstado() {
+    if (!ufPagina) return;
+    var e = ESTADOS[ufPagina];
+    $$('[data-uf-titulo]').forEach(function (el) { el.textContent = ' ' + e[1] + ' ' + e[0]; });
+    document.title = 'Plano de saúde MedSênior ' + e[1] + ' ' + e[0] + ' | Cotação com corretor autorizado';
+  }
+
   function aplicarFotoTopo() {
     var hero = $('[data-hero]');
     if (!hero || !cfg.fotoTopo) return;
-    hero.classList.add('hero--foto');
+    hero.classList.add('banner--foto');
     hero.style.setProperty('--foto-topo', 'url("' + cfg.fotoTopo + '")');
   }
 
@@ -291,6 +321,7 @@
     window.fbq('track', 'PageView');
   }
 
+  aplicarEstado();
   aplicarFotoTopo();
   aplicarOferta();
   carregarAds();

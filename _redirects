@@ -1,0 +1,4 @@
+# Netlify: páginas por estado. /go e /go/ mostram index.html com o título de Goiás.
+# Arquivos que existem (assets, privacidade.html) são servidos antes destas regras.
+/:uf/*   /:splat   200
+/:uf     /index.html   200

@@ -27,6 +27,7 @@ Só entra na planilha quem preenche o formulário, e todo mundo que vai para o W
 | `assets/og-vanessa-v2.jpg` | Prévia com a foto da Vanessa, para quando `quemAtende.mostrar` for `true` |
 | `assets/topo.jpg` | Foto de fundo do topo (provisória) |
 | `assets/foto-*.jpg` | Fotos das seções "O que o plano oferece" e da campanha |
+| `_redirects` | Rotas do Netlify para as páginas por estado |
 | `apps-script/Code.gs` | Código que roda na Planilha Google e recebe os leads |
 
 ## Rodar localmente
@@ -53,6 +54,18 @@ python3 -m http.server 8000
 - `googleAds`: `id` da conta e rótulo de `conversao`, disparada quando o formulário é enviado.
 
 Tudo em `config.js` é público para quem abre a página. Não colocar senhas ali.
+
+## Páginas por estado
+
+A mesma página serve a todos os estados. `/go` (ou `/go/`, ou `?uf=GO`) mostra
+"Plano de saúde MedSênior em Goiás" no título; sem sigla, a página é nacional. Funciona para as
+27 siglas sem editar nada. Em `config.js`, `estados` permite dar a um estado WhatsApp e foto próprios.
+
+Nos anúncios, segmente cada campanha por região e use o link do estado correspondente,
+por exemplo `https://SEU-DOMINIO/go?utm_source=meta&utm_campaign=goias`. A planilha registra
+de qual página do estado veio cada lead. As rotas dependem do arquivo `_redirects` (Netlify).
+
+A prévia do WhatsApp (`og:*`) é a mesma para todos os estados, porque os robôs não executam JavaScript.
 
 ## Planilha e e-mail de aviso
 

@@ -71,11 +71,25 @@ a:hover { color: #0B6B37; }
 
 /* Hero */
 .hero { background: var(--verde-escuro); color: #E4EFE7; }
-.hero--foto {
+.banner { background: var(--verde-escuro); color: #E4EFE7; }
+.banner .container { min-height: 520px; display: flex; align-items: center; padding-top: 64px; padding-bottom: 64px; }
+.banner__texto { max-width: 560px; display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
+.banner h1 {
+  font-size: clamp(34px, 5vw, 56px); line-height: 1.08; font-weight: 800;
+  color: var(--verde-claro); letter-spacing: -0.02em;
+}
+.banner--foto {
   background:
-    linear-gradient(90deg, rgba(0, 69, 34, 0.94) 0%, rgba(0, 69, 34, 0.86) 45%, rgba(0, 69, 34, 0.55) 100%),
-    var(--foto-topo) center / cover no-repeat,
+    linear-gradient(90deg, #004522 0%, rgba(0, 69, 34, 0.92) 32%, rgba(0, 69, 34, 0.35) 55%, rgba(0, 69, 34, 0) 70%),
+    var(--foto-topo) right center / cover no-repeat,
     var(--verde-escuro);
+}
+.hero__titulo { font-size: clamp(28px, 4vw, 36px); line-height: 1.15; font-weight: 800; color: var(--verde-claro); }
+.vantagens { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; font-size: 20px; }
+.vantagens li { display: flex; gap: 12px; align-items: flex-start; }
+.vantagens li::before {
+  content: ''; flex: none; width: 24px; height: 24px; margin-top: 3px; border-radius: 50%;
+  background: var(--verde-claro) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23003A1D' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center / 16px no-repeat;
 }
 .hero__linha {
   display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;
@@ -219,6 +233,17 @@ details p { margin-top: 12px; color: var(--tinta-media); }
 .texto h1 { font-size: 34px; font-weight: 800; color: var(--verde-escuro); margin-bottom: 24px; }
 .texto h2 { font-size: 22px; font-weight: 700; margin: 32px 0 8px; }
 .texto p { margin-bottom: 12px; color: var(--tinta-media); }
+
+@media (max-width: 760px) {
+  .banner .container { min-height: 0; padding-top: 0; padding-bottom: 40px; display: block; }
+  .banner--foto {
+    background:
+      linear-gradient(180deg, rgba(0, 69, 34, 0) 0, rgba(0, 69, 34, 0) 38vw, #004522 60vw),
+      var(--foto-topo) 72% 0 / auto 60vw no-repeat,
+      var(--verde-escuro);
+  }
+  .banner--foto .container { padding-top: 52vw; }
+}
 
 @media (max-width: 560px) {
   .hero__linha { padding-top: 40px; padding-bottom: 40px; gap: 32px; }
