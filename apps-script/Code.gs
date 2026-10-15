@@ -10,11 +10,11 @@
 
 var ABA = 'Leads';
 var COLUNAS = [
-  'Data/hora', 'Nome', 'Telefone', 'UF', 'Origem do clique',
+  'Data/hora', 'Nome', 'Telefone', 'E-mail', 'CEP', 'Cidade', 'UF', 'Vínculo com empresa', 'Origem do clique',
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
   'ID do clique (gclid/fbclid)', 'Página'
 ];
-var UFS_ACEITAS = ['ES', 'SP', 'RJ', 'MG', 'PR', 'RS', 'PE', 'DF'];
+var VINCULOS = ['Não', 'Sim, MEI ou proprietário de empresa', 'Sim, funcionário de empresa'];
 
 function doPost(e) {
   var trava = LockService.getScriptLock();
@@ -28,19 +28,21 @@ function doPost(e) {
     var digitos = String(d.telefone || '').replace(/\D/g, '');
     if (nome.length < 2 || digitos.length < 10 || digitos.length > 11) return resposta('invalido');
 
-    var uf = UFS_ACEITAS.indexOf(String(d.uf)) >= 0 ? String(d.uf) : '';
+    var uf = /^[A-Z]{2}$/.test(String(d.uf)) ? String(d.uf) : '';
+    var vinculo = VINCULOS.indexOf(String(d.vinculo)) >= 0 ? String(d.vinculo) : '';
 
     trava.waitLock(10000);
     var aba = abaDeLeads();
     aba.appendRow([
-      new Date(), nome, limpar(d.telefone, 20), uf, limpar(d.origem, 40),
+      new Date(), nome, limpar(d.telefone, 20), limpar(d.email, 120), limpar(d.cep, 9),
+      limpar(d.cidade, 80), uf, vinculo, limpar(d.origem, 40),
       limpar(d.utm_source, 100), limpar(d.utm_medium, 100), limpar(d.utm_campaign, 150),
       limpar(d.utm_term, 150), limpar(d.utm_content, 150),
       limpar(d.gclid, 200), limpar(d.pagina, 300)
     ]);
     trava.releaseLock();
 
-    avisar(nome, d.telefone, uf, digitos);
+    avisar(nome, d, uf, vinculo, digitos);
     return resposta('ok');
   } catch (err) {
     console.error(err);
@@ -58,15 +60,18 @@ function abaDeLeads() {
   return aba;
 }
 
-function avisar(nome, telefone, uf, digitos) {
+function avisar(nome, d, uf, vinculo, digitos) {
   var para = PropertiesService.getScriptProperties().getProperty('EMAIL_AVISO');
   if (!para) return;
+  var local = [limpar(d.cidade, 80), uf].filter(String).join(' - ');
   MailApp.sendEmail({
     to: para,
     subject: 'Novo lead MedSênior: ' + nome + (uf ? ' (' + uf + ')' : ''),
     body: 'Nome: ' + nome + '\n' +
-      'WhatsApp: ' + limpar(telefone, 20) + '\n' +
-      'Estado: ' + (uf || 'não informado') + '\n\n' +
+      'Telefone: ' + limpar(d.telefone, 20) + '\n' +
+      'E-mail: ' + (limpar(d.email, 120) || 'não informado') + '\n' +
+      'CEP: ' + limpar(d.cep, 9) + (local ? ' (' + local + ')' : '') + '\n' +
+      'Vínculo com empresa: ' + (vinculo || 'não informado') + '\n\n' +
       'Abrir conversa: https://wa.me/55' + digitos + '\n\n' +
       'Planilha: ' + SpreadsheetApp.getActiveSpreadsheet().getUrl()
   });

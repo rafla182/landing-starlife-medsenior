@@ -3,15 +3,16 @@
 
   var cfg = window.LP_CONFIG || {};
 
-  var UFS = [
-    { id: 'ES', nome: 'Espírito Santo', prep: 'no' },
-    { id: 'SP', nome: 'São Paulo', prep: 'em' },
-    { id: 'RJ', nome: 'Rio de Janeiro', prep: 'no' },
-    { id: 'MG', nome: 'Minas Gerais', prep: 'em' },
-    { id: 'PR', nome: 'Paraná', prep: 'no' },
-    { id: 'RS', nome: 'Rio Grande do Sul', prep: 'no' },
-    { id: 'PE', nome: 'Pernambuco', prep: 'em' },
-    { id: 'DF', nome: 'Distrito Federal', prep: 'no' }
+  // Faixas de CEP por estado (Correios). Usadas para saber o estado sem depender de internet.
+  var FAIXAS_CEP = [
+    [1000, 19999, 'SP'], [20000, 28999, 'RJ'], [29000, 29999, 'ES'], [30000, 39999, 'MG'],
+    [40000, 48999, 'BA'], [49000, 49999, 'SE'], [50000, 56999, 'PE'], [57000, 57999, 'AL'],
+    [58000, 58999, 'PB'], [59000, 59999, 'RN'], [60000, 63999, 'CE'], [64000, 64999, 'PI'],
+    [65000, 65999, 'MA'], [66000, 68899, 'PA'], [68900, 68999, 'AP'], [69000, 69299, 'AM'],
+    [69300, 69399, 'RR'], [69400, 69899, 'AM'], [69900, 69999, 'AC'], [70000, 72799, 'DF'],
+    [72800, 72999, 'GO'], [73000, 73699, 'DF'], [73700, 76799, 'GO'], [76800, 76999, 'RO'],
+    [77000, 77999, 'TO'], [78000, 78899, 'MT'], [79000, 79999, 'MS'], [80000, 87999, 'PR'],
+    [88000, 89999, 'SC'], [90000, 99999, 'RS']
   ];
 
   var params = new URLSearchParams(window.location.search);
@@ -22,33 +23,36 @@
     $$(sel).forEach(function (el) { el.hidden = !visivel; });
   }
 
-  /* ---------- Estado (UF) ---------- */
+  /* ---------- CEP ---------- */
 
-  function ufValida(id) {
-    return UFS.filter(function (u) { return u.id === id; })[0];
+  function ufDoCep(digitos) {
+    if (digitos.length !== 8) return '';
+    var n = parseInt(digitos.slice(0, 5), 10);
+    for (var i = 0; i < FAIXAS_CEP.length; i++) {
+      if (n >= FAIXAS_CEP[i][0] && n <= FAIXAS_CEP[i][1]) return FAIXAS_CEP[i][2];
+    }
+    return '';
   }
 
-  var ufAtual = (ufValida((params.get('uf') || '').toUpperCase()) || ufValida(cfg.ufPadrao) || UFS[0]).id;
+  var local = { cep: '', uf: '', cidade: '' };
 
-  function desenharUfs() {
-    var caixa = $('#ufs');
-    caixa.textContent = '';
-    UFS.forEach(function (u) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'uf';
-      b.textContent = u.id;
-      b.title = u.nome;
-      b.setAttribute('aria-label', u.nome);
-      b.setAttribute('aria-pressed', String(u.id === ufAtual));
-      b.addEventListener('click', function () {
-        ufAtual = u.id;
-        desenharUfs();
-      });
-      caixa.appendChild(b);
-    });
-    var u = ufValida(ufAtual);
-    $$('[data-uf-titulo]').forEach(function (el) { el.textContent = u.prep + ' ' + u.nome; });
+  function consultarCidade(digitos) {
+    // ViaCEP completa a cidade. Se falhar, o estado já vem da faixa do CEP.
+    if (!window.fetch) return;
+    fetch('https://viacep.com.br/ws/' + digitos + '/json/')
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (local.cep !== digitos || !d || d.erro) return;
+        local.cidade = d.localidade || '';
+        if (d.uf) local.uf = d.uf;
+        mostrarLocal();
+      })
+      .catch(function () {});
+  }
+
+  function mostrarLocal() {
+    var ajuda = $('#cep-local');
+    ajuda.textContent = local.uf ? (local.cidade ? local.cidade + ' - ' : '') + local.uf : '';
   }
 
   /* ---------- Campanha e preço ---------- */
@@ -113,6 +117,8 @@
   var erro = $('#form-erro');
   var nome = $('#lead-nome');
   var fone = $('#lead-fone');
+  var email = $('#lead-email');
+  var cep = $('#lead-cep');
 
   function mascara(v) {
     var d = String(v).replace(/\D/g, '').slice(0, 11);
@@ -123,6 +129,21 @@
 
   fone.addEventListener('input', function () { fone.value = mascara(fone.value); });
 
+  $$('input[name="vinculo"]').forEach(function (r) {
+    r.addEventListener('change', function () {
+      if (!erro.hidden && erro.textContent.indexOf('vínculo') >= 0) limparErro();
+    });
+  });
+
+  cep.addEventListener('input', function () {
+    var d = cep.value.replace(/\D/g, '').slice(0, 8);
+    cep.value = d.length > 5 ? d.slice(0, 5) + '-' + d.slice(5) : d;
+    if (d === local.cep) return;
+    local = { cep: d, uf: ufDoCep(d), cidade: '' };
+    mostrarLocal();
+    if (local.uf) consultarCidade(d);
+  });
+
   function falha(campo, msg) {
     erro.textContent = msg;
     erro.hidden = false;
@@ -132,13 +153,12 @@
 
   function limparErro() {
     erro.hidden = true;
-    nome.removeAttribute('aria-invalid');
-    fone.removeAttribute('aria-invalid');
+    [nome, fone, email, cep].concat($$('input[name="vinculo"]')).forEach(function (c) { c.removeAttribute('aria-invalid'); });
   }
 
   function linkWhatsapp(n) {
-    var u = ufValida(ufAtual);
-    var texto = 'Olá! Sou ' + n + ', de ' + u.nome + '. Quero uma cotação do plano MedSênior.';
+    var onde = local.cidade ? local.cidade + ' - ' + local.uf : local.uf ? local.uf : 'CEP ' + cep.value;
+    var texto = 'Olá! Sou ' + n + ', de ' + onde + '. Quero uma cotação do plano MedSênior.';
     return 'https://wa.me/' + (cfg.whatsapp || '') + '?text=' + encodeURIComponent(texto);
   }
 
@@ -176,7 +196,12 @@
     var digitos = fone.value.replace(/\D/g, '');
 
     if (n.length < 2) return falha(nome, 'Informe seu nome.');
-    if (digitos.length < 10 || digitos.length > 11) return falha(fone, 'Informe o WhatsApp com DDD.');
+    if (digitos.length < 10 || digitos.length > 11) return falha(fone, 'Informe o telefone com DDD.');
+    var em = email.value.trim();
+    if (em && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return falha(email, 'Confira o e-mail ou deixe o campo em branco.');
+    if (!ufDoCep(cep.value.replace(/\D/g, ''))) return falha(cep, 'Informe um CEP válido, com 8 números.');
+    var vinculo = form.elements.vinculo.value;
+    if (!vinculo) return falha(form.querySelector('input[name="vinculo"]'), 'Responda se você possui vínculo com uma empresa ou é MEI.');
 
     var url = linkWhatsapp(n);
 
@@ -185,7 +210,11 @@
       gravar({
         nome: n,
         telefone: fone.value,
-        uf: ufAtual,
+        email: em,
+        cep: cep.value,
+        uf: local.uf,
+        cidade: local.cidade,
+        vinculo: vinculo,
         origem: origem,
         utm_source: params.get('utm_source') || '',
         utm_medium: params.get('utm_medium') || '',
@@ -221,6 +250,15 @@
     nome.focus();
   });
 
+  /* ---------- Foto do topo ---------- */
+
+  function aplicarFotoTopo() {
+    var hero = $('[data-hero]');
+    if (!hero || !cfg.fotoTopo) return;
+    hero.classList.add('hero--foto');
+    hero.style.setProperty('--foto-topo', 'url("' + cfg.fotoTopo + '")');
+  }
+
   /* ---------- Google Ads ---------- */
 
   function carregarAds() {
@@ -253,7 +291,7 @@
     window.fbq('track', 'PageView');
   }
 
-  desenharUfs();
+  aplicarFotoTopo();
   aplicarOferta();
   carregarAds();
   carregarPixel();

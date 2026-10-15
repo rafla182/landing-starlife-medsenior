@@ -6,7 +6,7 @@ Site estático (HTML, CSS e JavaScript puros), sem build.
 
 ## Como funciona
 
-1. Todos os botões da página levam ao mesmo formulário (nome, WhatsApp e estado).
+1. Todos os botões da página levam ao mesmo formulário (nome, telefone, e-mail opcional, CEP e vínculo com empresa).
 2. Ao enviar, o lead é gravado em uma Planilha Google e a corretora recebe um e-mail de aviso.
 3. Em seguida o WhatsApp abre com a mensagem pronta.
 
@@ -20,11 +20,12 @@ Só entra na planilha quem preenche o formulário, e todo mundo que vai para o W
 | --- | --- |
 | `index.html` | A página |
 | `styles.css` | Estilos |
-| `script.js` | Formulário, estados, campanha, envio do lead |
+| `script.js` | Formulário, CEP, campanha, envio do lead |
 | `config.js` | **Configuração do dia a dia** (WhatsApp, planilha, campanha, preço, Google Ads) |
 | `privacidade.html` | Política de privacidade (rascunho) |
 | `assets/og-medsenior.jpg` | Prévia do link no WhatsApp (1200×630), versão genérica |
 | `assets/og-vanessa-v2.jpg` | Prévia com a foto da Vanessa, para quando `quemAtende.mostrar` for `true` |
+| `assets/topo.jpg` | Foto de fundo do topo (provisória) |
 | `assets/foto-*.jpg` | Fotos das seções "O que o plano oferece" e da campanha |
 | `apps-script/Code.gs` | Código que roda na Planilha Google e recebe os leads |
 
@@ -39,8 +40,9 @@ python3 -m http.server 8000
 
 - `whatsapp`: número que recebe os contatos, com 55 + DDD, só dígitos.
 - `planilhaUrl`: URL do Web App do Apps Script (abaixo). Vazio = o lead não é gravado.
-- `ufPadrao`: estado marcado por padrão. Um link com `?uf=SP` abre a página já em São Paulo,
-  útil para ter uma URL por campanha do Google Ads.
+- `fotoTopo`: foto de fundo do topo (imagem larga). Vazio = fundo verde liso.
+- O estado vem do CEP digitado (faixas dos Correios, sem lista fixa de estados atendidos). A cidade é
+  completada pelo ViaCEP quando disponível; se o ViaCEP falhar, o lead segue só com o estado.
 - `campanha`: `ativa` liga o selo e a faixa de carência zero; depois de `fim` eles somem sozinhos.
 - `preco`: bloco "a partir de". Só ligar com valor real e contratável, e preencher a referência.
 - `quemAtende`: quem atende os leads. Com `mostrar: false` (padrão) a página é genérica, sem nome
@@ -61,8 +63,8 @@ Tudo em `config.js` é público para quem abre a página. Não colocar senhas al
 4. **Implantar → Nova implantação → App da Web**, executar como "Eu" e acesso "Qualquer pessoa".
 5. Copiar a URL terminada em `/exec` para `planilhaUrl` em `config.js`.
 
-A aba `Leads` é criada no primeiro envio, com as colunas: data/hora, nome, telefone, UF,
-origem do clique, parâmetros do anúncio (utm e ID do clique do Google ou da Meta) e página.
+A aba `Leads` é criada no primeiro envio, com as colunas: data/hora, nome, telefone, e-mail, CEP,
+cidade, UF, vínculo com empresa, origem do clique, parâmetros do anúncio (utm e ID do clique do Google ou da Meta) e página.
 
 Ao alterar `Code.gs`, é preciso criar uma nova versão da implantação para a mudança valer.
 

@@ -44,12 +44,12 @@
 
 <main>
 
-<section class="hero">
+<section class="hero" data-hero>
   <div class="container hero__linha">
     <div class="hero__texto">
       <img class="hero__operadora" src="assets/logo-medsenior-claro.png" alt="MedSênior" width="560" height="194">
       <p class="selo" data-campanha hidden>Carência zero* para contratos assinados até <span data-campanha-fim>31/10/2026</span></p>
-      <h1>Plano de saúde MedSênior <span data-uf-titulo>no Espírito Santo</span>, sem coparticipação.</h1>
+      <h1>Plano de saúde MedSênior, sem coparticipação.</h1>
       <p class="hero__sub">Cuidado pensado para quem tem 44 anos ou mais, com medicina preventiva e atendimento em rede própria. Peça sua cotação sem custo com um corretor autorizado.</p>
       <div class="preco" data-preco hidden>
         <span class="preco__rotulo">Planos a partir de</span>
@@ -69,13 +69,28 @@
         </div>
 
         <div class="campo">
-          <label for="lead-fone">WhatsApp com DDD</label>
+          <label for="lead-fone">Telefone (WhatsApp) com DDD</label>
           <input id="lead-fone" name="telefone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(27) 99999-9999" required>
         </div>
 
-        <fieldset class="campo">
-          <legend>Seu estado</legend>
-          <div class="ufs" id="ufs"></div>
+        <div class="campo">
+          <label for="lead-email">E-mail <span class="opcional">(opcional)</span></label>
+          <input id="lead-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="voce@email.com">
+        </div>
+
+        <div class="campo">
+          <label for="lead-cep">CEP</label>
+          <input id="lead-cep" name="cep" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" required aria-describedby="cep-local">
+          <span class="campo__ajuda" id="cep-local" aria-live="polite"></span>
+        </div>
+
+        <fieldset class="campo" id="lead-vinculo">
+          <legend>Você possui vínculo com uma empresa ou é MEI?</legend>
+          <div class="opcoes">
+            <label class="opcao"><input type="radio" name="vinculo" value="Não"> Não</label>
+            <label class="opcao"><input type="radio" name="vinculo" value="Sim, MEI ou proprietário de empresa"> Sim, sou MEI ou proprietário de empresa</label>
+            <label class="opcao"><input type="radio" name="vinculo" value="Sim, funcionário de empresa"> Sim, sou funcionário de empresa</label>
+          </div>
         </fieldset>
 
         <!-- Campo isca para robôs: pessoas não veem nem preenchem. -->
@@ -171,7 +186,7 @@
       <li class="passo">
         <span class="passo__n" aria-hidden="true">1</span>
         <h3>Você pede a cotação</h3>
-        <p>Informe seu nome, WhatsApp e estado no formulário.</p>
+        <p>Informe seu nome, telefone e CEP no formulário.</p>
       </li>
       <li class="passo">
         <span class="passo__n" aria-hidden="true">2</span>
@@ -206,8 +221,8 @@
       <p>É a cobertura parcial temporária: um período em que alguns procedimentos ligados a doenças ou lesões que você já tinha ao contratar ficam sem cobertura. O corretor explica o seu caso na cotação.</p>
     </details>
     <details>
-      <summary>Em quais estados posso contratar?</summary>
-      <p>Espírito Santo, São Paulo, Rio de Janeiro, Minas Gerais, Paraná, Rio Grande do Sul, Pernambuco e Distrito Federal.</p>
+      <summary>A MedSênior atende a minha cidade?</summary>
+      <p>A MedSênior está presente em várias regiões do país e segue em expansão. Informe seu CEP no formulário e o corretor confirma o atendimento na sua cidade.</p>
     </details>
   </div>
 </section>
