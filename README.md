@@ -93,7 +93,7 @@ Para Google Ads, usar domínio próprio com HTTPS.
 - [ ] Valores e regras das campanhas para o bloco "a partir de" (a cliente vai enviar)
 - [ ] Aprovação da Aline (versão de exemplo com a Vanessa)
 - [ ] Revisar a política de privacidade antes de publicar
-- [ ] Criar a planilha e preencher `planilhaUrl`
+- [x] Criar a planilha e preencher `planilhaUrl`
 - [ ] Preencher `metaPixel` e testar o evento Lead (a cliente anuncia na Meta; Google Ads ainda não tem conta)
 - [ ] Domínio definitivo (hoje a página está em `landing-starlife-medsenior.netlify.app`). Ao trocar,
   atualizar `og:url` e `og:image` em `index.html`
