@@ -7,7 +7,7 @@ window.LP_CONFIG = {
   whatsapp: '5527995282647',
 
   // URL do Web App do Google Apps Script (ver README). Vazio = não grava na planilha.
-  planilhaUrl: '',
+  planilhaUrl: 'https://script.google.com/macros/s/AKfycbydfixngShSEB-jpkWlWaTEDWKqOL5vvsLU45DaYaDL16UjBS3AACYcuoWnSqJ9u7UK/exec',
 
   // Estado da página quando o link não traz um (/go, ?uf=GO). Vazio = página nacional, sem estado no título.
   ufPadrao: 'ES',
