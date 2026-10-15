@@ -33,7 +33,8 @@
     var porCaminho = (window.location.pathname.split('/').filter(Boolean)[0] || '').toUpperCase();
     if (ESTADOS[porLink]) return porLink;
     if (ESTADOS[porCaminho]) return porCaminho;
-    return '';
+    var padrao = String(cfg.ufPadrao || '').toUpperCase();
+    return ESTADOS[padrao] ? padrao : '';
   })();
   var estadoCfg = (cfg.estados && cfg.estados[ufPagina]) || {};
   if (estadoCfg.whatsapp) cfg.whatsapp = estadoCfg.whatsapp;

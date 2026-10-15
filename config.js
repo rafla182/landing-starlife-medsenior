@@ -9,6 +9,9 @@ window.LP_CONFIG = {
   // URL do Web App do Google Apps Script (ver README). Vazio = não grava na planilha.
   planilhaUrl: '',
 
+  // Estado da página quando o link não traz um (/go, ?uf=GO). Vazio = página nacional, sem estado no título.
+  ufPadrao: 'ES',
+
   // Ajustes por estado, para as páginas /go, /sp etc. (qualquer sigla funciona, mesmo sem entrada aqui).
   // Cada estado pode ter WhatsApp e foto de topo próprios. Ex.:
   //   GO: { whatsapp: '5562999999999', fotoTopo: 'assets/topo-go.jpg' }
