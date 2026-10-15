@@ -47,7 +47,7 @@
 <section class="banner" data-hero>
   <div class="container">
     <div class="banner__texto">
-      <img class="hero__operadora" src="assets/logo-medsenior-claro.png" alt="MedSênior" width="560" height="194">
+      <img class="hero__operadora" data-logo-operadora src="assets/logo-medsenior-claro.png" alt="MedSênior" width="560" height="194">
       <p class="selo" data-campanha hidden>Carência zero* para contratos assinados até <span data-campanha-fim>31/10/2026</span></p>
       <h1>Plano de saúde MedSênior<span data-uf-titulo></span>, sem coparticipação.</h1>
       <p class="hero__sub">Cuidado pensado para quem tem 44 anos ou mais, com medicina preventiva e atendimento em rede própria.</p>
@@ -75,7 +75,7 @@
     <div class="cartao" id="cotacao">
       <form id="form-lead" novalidate>
         <h2>Peça sua cotação</h2>
-        <p class="cartao__sub">Preencha e continue a conversa no WhatsApp.</p>
+        <p class="cartao__sub">Seus dados são usados apenas para o corretor entrar em contato e enviar a cotação que você pediu.</p>
 
         <div class="campo">
           <label for="lead-nome">Nome</label>
@@ -113,10 +113,14 @@
           <input id="lead-site" name="site" type="text" tabindex="-1" autocomplete="off">
         </div>
 
+        <label class="aceite" for="lead-aceite">
+          <input id="lead-aceite" name="aceite" type="checkbox" value="sim">
+          <span>Autorizo o contato por WhatsApp, telefone ou e-mail para receber a cotação, conforme a <a href="privacidade.html">Política de privacidade</a>.</span>
+        </label>
+
         <p class="erro" id="form-erro" role="alert" hidden></p>
 
         <button class="botao botao--escuro botao--cheio" type="submit">Continuar no WhatsApp</button>
-        <p class="consentimento">Ao enviar, você concorda em ser contatado pelo corretor responsável por esta página. <a href="privacidade.html">Política de privacidade</a>.</p>
       </form>
 
       <div id="form-sucesso" hidden>

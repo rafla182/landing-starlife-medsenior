@@ -175,7 +175,7 @@
 
   function limparErro() {
     erro.hidden = true;
-    [nome, fone, email, cep].concat($$('input[name="vinculo"]')).forEach(function (c) { c.removeAttribute('aria-invalid'); });
+    [nome, fone, email, cep, $('#lead-aceite')].concat($$('input[name="vinculo"]')).forEach(function (c) { c.removeAttribute('aria-invalid'); });
   }
 
   function linkWhatsapp(n) {
@@ -224,6 +224,8 @@
     if (!ufDoCep(cep.value.replace(/\D/g, ''))) return falha(cep, 'Informe um CEP válido, com 8 números.');
     var vinculo = form.elements.vinculo.value;
     if (!vinculo) return falha(form.querySelector('input[name="vinculo"]'), 'Responda se você possui vínculo com uma empresa ou é MEI.');
+    var aceite = $('#lead-aceite');
+    if (!aceite.checked) return falha(aceite, 'Para enviar, marque a autorização de contato.');
 
     var url = linkWhatsapp(n);
 
@@ -237,6 +239,8 @@
         uf: local.uf,
         cidade: local.cidade,
         vinculo: vinculo,
+        aceite: 'sim',
+        aceite_em: new Date().toISOString(),
         pagina_uf: ufPagina,
         origem: origem,
         utm_source: params.get('utm_source') || '',
@@ -282,6 +286,10 @@
     document.title = 'Plano de saúde MedSênior ' + e[1] + ' ' + e[0] + ' | Cotação com corretor autorizado';
   }
 
+  function aplicarLogoOperadora() {
+    if (cfg.logoOperadora === false) mostrar('[data-logo-operadora]', false);
+  }
+
   function aplicarFotoTopo() {
     var hero = $('[data-hero]');
     if (!hero || !cfg.fotoTopo) return;
@@ -323,6 +331,7 @@
 
   aplicarEstado();
   aplicarFotoTopo();
+  aplicarLogoOperadora();
   aplicarOferta();
   carregarAds();
   carregarPixel();

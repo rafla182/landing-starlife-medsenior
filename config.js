@@ -14,6 +14,9 @@ window.LP_CONFIG = {
   //   GO: { whatsapp: '5562999999999', fotoTopo: 'assets/topo-go.jpg' }
   estados: {},
 
+  // Logo da MedSênior no topo. Só use com autorização da operadora; false esconde o logo.
+  logoOperadora: true,
+
   // Foto de fundo do topo da página (imagem larga, em torno de 1600 px). Vazio = fundo verde liso.
   fotoTopo: 'assets/topo.jpg',
 

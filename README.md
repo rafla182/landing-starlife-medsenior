@@ -50,6 +50,7 @@ python3 -m http.server 8000
   nem foto, e os leads vão para o `whatsapp` configurado. Com `mostrar: true`, o nome aparece no topo
   e no rodapé e entra a seção "Quem atende você". Para outro corretor, troque esses dados e o `whatsapp`.
   O nome do corretor fica sempre na política de privacidade, porque a LGPD exige identificar o responsável.
+- `logoOperadora`: mostra o logo da MedSênior no topo. Manter só com autorização da operadora.
 - `metaPixel`: ID do Pixel da Meta. Dispara `PageView` ao abrir e `Lead` quando o formulário é enviado.
 - `googleAds`: `id` da conta e rótulo de `conversao`, disparada quando o formulário é enviado.
 
@@ -97,6 +98,9 @@ Para Google Ads, usar domínio próprio com HTTPS.
   atualizar `og:url` e `og:image` em `index.html`
 
 ## Cuidados
+
+- O formulário exige a autorização de contato (LGPD) e a planilha guarda a data em que ela foi dada.
+- No Netlify, desligar o Netlify Drawer (Site configuration → Collaboration), que injeta um script na página publicada.
 
 - A página é do corretor e não pode ter a identidade visual da corretora (StarLife).
 - Não é o site da operadora: manter "corretora autorizada MedSênior" no topo e o aviso no rodapé.

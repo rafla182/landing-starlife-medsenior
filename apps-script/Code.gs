@@ -12,7 +12,7 @@ var ABA = 'Leads';
 var COLUNAS = [
   'Data/hora', 'Nome', 'Telefone', 'E-mail', 'CEP', 'Cidade', 'UF', 'Vínculo com empresa', 'Página do estado', 'Origem do clique',
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
-  'ID do clique (gclid/fbclid)', 'Página'
+  'ID do clique (gclid/fbclid)', 'Página', 'Autorizou contato em'
 ];
 var VINCULOS = ['Não', 'Sim, MEI ou proprietário de empresa', 'Sim, funcionário de empresa'];
 
@@ -27,6 +27,7 @@ function doPost(e) {
     var nome = limpar(d.nome, 80);
     var digitos = String(d.telefone || '').replace(/\D/g, '');
     if (nome.length < 2 || digitos.length < 10 || digitos.length > 11) return resposta('invalido');
+    if (d.aceite !== 'sim') return resposta('sem-autorizacao');
 
     var uf = /^[A-Z]{2}$/.test(String(d.uf)) ? String(d.uf) : '';
     var vinculo = VINCULOS.indexOf(String(d.vinculo)) >= 0 ? String(d.vinculo) : '';
@@ -38,7 +39,7 @@ function doPost(e) {
       limpar(d.cidade, 80), uf, vinculo, limpar(d.pagina_uf, 2), limpar(d.origem, 40),
       limpar(d.utm_source, 100), limpar(d.utm_medium, 100), limpar(d.utm_campaign, 150),
       limpar(d.utm_term, 150), limpar(d.utm_content, 150),
-      limpar(d.gclid, 200), limpar(d.pagina, 300)
+      limpar(d.gclid, 200), limpar(d.pagina, 300), limpar(d.aceite_em, 30)
     ]);
     trava.releaseLock();
 
