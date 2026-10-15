@@ -120,13 +120,13 @@ a:hover { color: #0B6B37; }
   background: #fff; color: var(--tinta); border: 1px solid var(--linha); border-radius: 20px; padding: 32px;
   scroll-margin-top: 16px;
 }
-.cartao form, #form-sucesso { display: flex; flex-direction: column; gap: 20px; }
+.cartao form, #form-sucesso { display: flex; flex-direction: column; gap: 24px; }
 #form-sucesso { align-items: flex-start; gap: 16px; }
 .cartao h2 { font-size: 26px; font-weight: 800; color: var(--verde-escuro); line-height: 1.2; }
 .cartao__sub { font-size: 17px; color: var(--tinta-suave); margin-top: -14px; }
 .campo { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; border: 0; min-width: 0; }
 .campo label, .campo legend { font-weight: 700; font-size: 17px; padding: 0; }
-.campo legend { margin-bottom: 10px; }
+.campo legend { margin-bottom: 14px; line-height: 1.35; }
 .campo input {
   width: 100%; height: 56px; padding: 0 16px;
   border: 2px solid var(--borda-campo); border-radius: 12px;
@@ -135,14 +135,16 @@ a:hover { color: #0B6B37; }
 .campo input[aria-invalid="true"] { border-color: #B3261E; }
 .opcional { font-weight: 500; color: var(--tinta-suave); }
 .campo__ajuda { font-size: 15px; color: var(--tinta-suave); min-height: 1.2em; }
-.opcoes { display: flex; flex-direction: column; gap: 8px; }
-.opcao {
-  display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 10px 14px;
-  border: 2px solid var(--borda-campo); border-radius: 12px; cursor: pointer;
+.opcoes { display: flex; flex-direction: column; gap: 12px; }
+.campo .opcao {
+  display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 12px 18px;
+  border: 1.5px solid #B9C9BD; border-radius: 14px; cursor: pointer; background: #fff;
+  transition: border-color .15s, background-color .15s;
   font-weight: 500 !important; font-size: 17px; line-height: 1.3;
 }
 .opcao input { width: 22px; height: 22px; margin: 0; flex: none; accent-color: var(--verde-escuro); }
-.opcao:has(input:checked) { border-color: var(--verde-escuro); background: #EEF6EF; }
+.campo .opcao:hover { border-color: var(--borda-campo); }
+.campo .opcao:has(input:checked) { border: 2px solid var(--verde-escuro); padding: 11.5px 17.5px; background: #EEF6EF; font-weight: 600 !important; }
 .opcao input[aria-invalid="true"] { outline: 2px solid #B3261E; outline-offset: 2px; }
 .isca { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .erro {
@@ -150,7 +152,10 @@ a:hover { color: #0B6B37; }
   background: #FDECEA; color: #8A1C12; font-size: 16px; font-weight: 600;
 }
 .consentimento { font-size: 14px; color: var(--tinta-suave); }
-.aceite { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; line-height: 1.45; color: var(--tinta-media); cursor: pointer; }
+.aceite {
+  display: flex; gap: 14px; align-items: flex-start; font-size: 15px; line-height: 1.5; color: var(--tinta-media); cursor: pointer;
+  padding: 16px 18px; border-radius: 14px; background: var(--fundo-suave);
+}
 .aceite input { width: 22px; height: 22px; margin: 1px 0 0; flex: none; accent-color: var(--verde-escuro); }
 .aceite input[aria-invalid="true"] { outline: 2px solid #B3261E; outline-offset: 2px; }
 

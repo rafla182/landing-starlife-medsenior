@@ -59,7 +59,8 @@ Tudo em `config.js` é público para quem abre a página. Não colocar senhas al
 ## Páginas por estado
 
 A mesma página serve a todos os estados. `/go` (ou `/go/`, ou `?uf=GO`) mostra
-"Plano de saúde MedSênior em Goiás" no título; sem sigla, a página é nacional. Funciona para as
+"Plano de saúde MedSênior em Goiás" no título. Sem sigla no link, vale o `ufPadrao` do `config.js`
+(hoje ES); com `ufPadrao` vazio, a página é nacional. Funciona para as
 27 siglas sem editar nada. Em `config.js`, `estados` permite dar a um estado WhatsApp e foto próprios.
 
 Nos anúncios, segmente cada campanha por região e use o link do estado correspondente,
